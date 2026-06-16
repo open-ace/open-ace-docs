@@ -1,0 +1,35 @@
+name: Docs Site CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out docs repo
+        uses: actions/checkout@v5
+
+      - name: Check out open-ace source repo
+        uses: actions/checkout@v5
+        with:
+          repository: open-ace/open-ace
+          path: open-ace-source
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build docs site
+        env:
+          OPEN_ACE_SOURCE_DIR: ${{ github.workspace }}/open-ace-source
+        run: npm run build
