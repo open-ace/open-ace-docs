@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T10:21:24.310Z",
+  "generatedAt": "2026-06-17T10:39:35.147Z",
   "repository": {
     "owner": "open-ace",
     "repo": "open-ace",
@@ -16,7 +16,7 @@
     "securityUrl": "https://github.com/open-ace/open-ace/security/policy",
     "stars": 4,
     "forks": 2,
-    "openIssues": 95,
+    "openIssues": 96,
     "watchers": 0,
     "defaultBranch": "main",
     "license": "Apache-2.0"
@@ -138,7 +138,7 @@
     "issuesUrl": "https://github.com/open-ace/open-ace/issues",
     "pullsUrl": "https://github.com/open-ace/open-ace/pulls",
     "goodFirstIssueCount": 3,
-    "openPullRequestCount": 6,
+    "openPullRequestCount": 7,
     "starterFocus": [
       "First-run setup and deployment fixes",
       "Docs parity between Chinese and English",
