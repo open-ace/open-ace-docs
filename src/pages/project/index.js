@@ -4,6 +4,21 @@ import Translate from '@docusaurus/Translate';
 import {ProjectChrome, formatNumber, projectData, styles} from '../../components/project/ProjectLayout';
 
 export default function ProjectOverviewPage() {
+  const recentProductSignals = [
+    {
+      title: 'Autonomous development is now central',
+      body: 'Open ACE can run issue-driven workflows with planning, execution, review, final code changes, batch issue navigation, and auto-merge controls.',
+    },
+    {
+      title: 'Timeline UX makes agent work inspectable',
+      body: 'Recent timeline updates added compact milestone cards, summaries, full-text views, status semantics, deep links, and clearer failure/pause behavior.',
+    },
+    {
+      title: 'Remote execution is expanding',
+      body: 'ZCode support, app-server mode, token-based remote agent identity, and CLI adapter hardening broaden the execution layer beyond the original tool set.',
+    },
+  ];
+
   const metrics = [
     {
       label: 'Stars',
@@ -24,11 +39,30 @@ export default function ProjectOverviewPage() {
 
   return (
     <ProjectChrome
-      title="Project visibility without leaving the docs site."
-      description="This section turns repository state, roadmap planning, changelog history, and community entry points into a single public surface. The content is generated during the site build, so the docs site stays synchronized with the repository instead of hand-maintained screenshots."
+      title="Project momentum without leaving the docs site."
+      description="Open ACE is moving quickly from a self-hosted AI coding workspace into an autonomous engineering control plane. This section turns repository state, roadmap planning, release history, and contribution entry points into a single public surface."
       eyebrow="Project"
       active="overview"
     >
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2>Recent product direction</h2>
+          <p>
+            The last three weeks of merged PRs show a clear product shape: autonomous development
+            workflows, observable execution timelines, safer remote agents, and more reliable
+            install/upgrade paths.
+          </p>
+        </div>
+        <div className={styles.cardGrid}>
+          {recentProductSignals.map((signal) => (
+            <article key={signal.title} className={styles.sectionCard}>
+              <h3>{signal.title}</h3>
+              <p>{signal.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2>Live repository signals</h2>
@@ -59,27 +93,27 @@ export default function ProjectOverviewPage() {
         </div>
         <div className={styles.cardGrid}>
           <article className={styles.sectionCard}>
-            <h3>Roadmap page</h3>
+            <h3>Autonomous workflow story</h3>
             <ul className={styles.bulletList}>
-              <li>Structured rendering of roadmap lanes from the repository source file</li>
-              <li>Clear separation between current work, upcoming work, and success criteria</li>
-              <li>Internal links from the landing site instead of raw GitHub Markdown links</li>
+              <li>Issue-driven runs with plan, implementation, review, and final summary stages</li>
+              <li>Batch issue support for operating multiple GitHub issues from one workflow</li>
+              <li>Timeline cards that expose progress, failures, retries, and code changes</li>
             </ul>
           </article>
           <article className={styles.sectionCard}>
-            <h3>Release page</h3>
+            <h3>Remote execution story</h3>
             <ul className={styles.bulletList}>
-              <li>Latest release summary plus changelog sections extracted during build</li>
-              <li>Fallback to committed changelog data when live release API data is unavailable</li>
-              <li>Better signal for evaluators deciding whether the project is actively maintained</li>
+              <li>Remote Agent registration and token management for controlled machines</li>
+              <li>CLI adapters for Claude Code, Qwen Code, Codex, OpenClaw, and ZCode</li>
+              <li>Docker, package, macOS, and source install paths receiving active fixes</li>
             </ul>
           </article>
           <article className={styles.sectionCard}>
-            <h3>Community page</h3>
+            <h3>Project transparency story</h3>
             <ul className={styles.bulletList}>
-              <li>Contribution, security, issues, PRs, and discussions in one place</li>
-              <li>Starter focus areas for new contributors</li>
-              <li>Build-time counters for open PRs and good-first-issue inventory when possible</li>
+              <li>Roadmap, releases, community links, and GitHub signals stay visible from docs</li>
+              <li>Build-time counters show issues, starter work, and repository metadata</li>
+              <li>Docs are split from the application repo so product docs can evolve cleanly</li>
             </ul>
           </article>
         </div>

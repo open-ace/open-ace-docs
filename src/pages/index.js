@@ -6,52 +6,75 @@ import styles from './index.module.css';
 
 const featureCards = [
   {
-    title: 'Unified AI coding workspace',
+    title: 'Autonomous development workspace',
     description:
-      'Run Claude Code, Qwen Code, Codex, and OpenClaw behind one self-hosted control plane.',
+      'Turn GitHub issues into planned, executed, reviewed, and merge-ready AI coding workflows.',
   },
   {
-    title: 'Remote Agent execution',
+    title: 'Multi-agent remote execution',
     description:
-      'Push coding sessions onto remote Linux, macOS, and Windows machines without handing out raw SSH access.',
+      'Run Claude Code, Qwen Code, Codex, OpenClaw, and ZCode on controlled remote machines.',
   },
   {
     title: 'Governance and observability',
     description:
-      'Track API key routing, permissions, quotas, cost, audit, and compliance from the same platform.',
+      'Track API key routing, token usage, timeline status, audit events, quotas, and cost signals.',
   },
 ];
 
 const audienceCards = [
   {
     eyebrow: 'For builders',
-    title: 'Give developers one place to work with AI agents',
-    body: 'Open ACE combines multi-tool sessions, remote workspaces, prompt reuse, and browser-based access.',
+    title: 'Run real AI development work from issues',
+    body: 'Batch GitHub issues, inspect milestone timelines, fork from a previous step, and keep final code changes visible.',
   },
   {
     eyebrow: 'For platform teams',
     title: 'Keep deployment and secrets inside your boundary',
-    body: 'Remote Agent and API Key Proxy are designed for self-hosted environments, internal machines, and controlled access.',
+    body: 'Remote Agent, token-based registration, and API Key Proxy keep machines, credentials, and execution policy self-hosted.',
   },
   {
     eyebrow: 'For governance',
-    title: 'See usage, risk, and ROI without stitching tools together',
-    body: 'Manage mode is built around cost visibility, quotas, audit trails, compliance reporting, and policy controls.',
+    title: 'See what happened while the agent worked',
+    body: 'Compact timeline cards, full-text milestone views, session topology, audit logs, and usage counters make runs explainable.',
   },
 ];
 
 const signalItems = [
   {
-    label: 'Work mode',
-    value: 'Sessions, prompts, remote machines, browser workspace',
+    label: 'Latest focus',
+    value: 'Autonomous workflows, batch issues, timeline UX, ZCode support',
   },
   {
-    label: 'Manage mode',
-    value: 'API keys, quotas, audit, compliance, ROI',
+    label: 'Execution layer',
+    value: 'Remote Agent, token auth, CLI adapters, app-server mode',
   },
   {
     label: 'Best next read',
-    value: 'Remote Agent, Deployment, Permission Model',
+    value: 'Remote Agent, Deployment, Permission Model, Project status',
+  },
+];
+
+const recentHighlights = [
+  {
+    title: 'Autonomous workflows became a product surface',
+    description:
+      'Recent PRs added issue-driven autonomous development, batch navigation, auto-merge controls, retry/timeout fixes, and session-aware execution.',
+  },
+  {
+    title: 'Execution is easier to inspect',
+    description:
+      'Timeline cards now show milestone summaries, full-text detail, final code changes, status filters, deep links, and clearer pause/failure semantics.',
+  },
+  {
+    title: 'Remote Agent is broader and safer',
+    description:
+      'ZCode joined Claude Code, Qwen Code, Codex, and OpenClaw, while token management and remote identity checks hardened agent access.',
+  },
+  {
+    title: 'Install and upgrade paths are getting real attention',
+    description:
+      'Docker, package, macOS, sudoers, migration, and config-path fixes make first-run and upgrade flows less brittle for evaluators.',
   },
 ];
 
@@ -66,11 +89,11 @@ export default function Home() {
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <p className={styles.kicker}>Open ACE</p>
-            <h1>Self-hosted AI coding workspace for real engineering teams.</h1>
+            <h1>Self-hosted control plane for AI coding agents.</h1>
             <p className={styles.heroText}>
-              Open ACE gives teams a browser-based workspace for AI coding agents plus the
-              governance plane needed to run them on internal machines, controlled API keys,
-              and auditable workflows.
+              Open ACE gives teams a browser workspace for AI coding agents, a remote execution
+              layer for internal machines, and an auditable autonomous workflow system that can
+              take GitHub issues from plan to implementation.
             </p>
             <div className={styles.heroActions}>
               <Link className="button button--primary button--lg" to="/docs/intro">
@@ -83,8 +106,8 @@ export default function Home() {
           </div>
           <div className={styles.heroPanel}>
             <div className={styles.heroPanelTop}>
-              <span className={styles.panelBadge}>Phase 1</span>
-              <span className={styles.panelBadgeMuted}>Docs and product site</span>
+              <span className={styles.panelBadge}>Current</span>
+              <span className={styles.panelBadgeMuted}>Updated from recent PRs</span>
             </div>
             {signalItems.map((item) => (
               <div key={item.label} className={styles.signalBlock}>
@@ -100,7 +123,7 @@ export default function Home() {
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <p className={styles.kicker}>Core value</p>
-            <h2>Three layers, one platform</h2>
+            <h2>From AI sessions to autonomous engineering runs</h2>
           </div>
           <div className={styles.featureGrid}>
             {featureCards.map((card) => (
@@ -115,7 +138,7 @@ export default function Home() {
         <section className={clsx(styles.section, styles.audienceSection)}>
           <div className={styles.sectionHeader}>
             <p className={styles.kicker}>Why teams adopt it</p>
-            <h2>Designed for self-hosted, multi-agent, governed AI engineering</h2>
+            <h2>Designed for teams that need useful automation and real control</h2>
           </div>
           <div className={styles.audienceGrid}>
             {audienceCards.map((card) => (
@@ -130,8 +153,23 @@ export default function Home() {
 
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
+            <p className={styles.kicker}>Recent momentum</p>
+            <h2>What changed in the last three weeks</h2>
+          </div>
+          <div className={styles.featureGrid}>
+            {recentHighlights.map((card) => (
+              <article key={card.title} className={styles.featureCard}>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
             <p className={styles.kicker}>Start here</p>
-            <h2>Phase 1 site scope</h2>
+            <h2>Evaluate the current product surface</h2>
           </div>
           <div className={styles.linkGrid}>
             <Link className={styles.linkCard} to="/docs/intro">
@@ -152,7 +190,7 @@ export default function Home() {
             </Link>
             <Link className={styles.linkCard} to="/project">
               <span>Project Status</span>
-              <strong>View roadmap, release history, and contribution entry points from the site</strong>
+              <strong>View recent highlights, roadmap, release history, and contribution entry points</strong>
             </Link>
           </div>
         </section>

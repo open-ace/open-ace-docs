@@ -210,6 +210,14 @@
   color: #18262b;
 }
 
+.sectionCard p,
+.releaseCard p,
+.communityCard p {
+  margin: 0;
+  color: #4f5d65;
+  line-height: 1.7;
+}
+
 .bulletList,
 .linkList,
 .metaList {

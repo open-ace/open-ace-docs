@@ -2,13 +2,36 @@ import React from 'react';
 import {ProjectChrome, projectData, styles} from '../../components/project/ProjectLayout';
 
 export default function RoadmapPage() {
+  const activeThemes = [
+    'Make autonomous workflows dependable enough for real repository work, including pause, retry, timeout, review, and merge behavior.',
+    'Improve evaluator confidence with timeline summaries, full-text milestone views, final code changes, and release/project transparency.',
+    'Keep remote execution practical across Docker, package installs, macOS, Windows, source installs, and additional CLI agents such as ZCode.',
+  ];
+
   return (
     <ProjectChrome
-      title="A practical roadmap, not a vague wishlist."
-      description="This view is generated from the repository roadmap file. It keeps the public roadmap inside the docs site while still preserving Git-based review and editing workflows for maintainers."
+      title="A practical roadmap for autonomous AI engineering."
+      description="This view combines the repository roadmap with the recent product direction visible in merged PRs: dependable autonomous workflows, inspectable execution, and safer self-hosted deployment."
       eyebrow="Roadmap"
       active="roadmap"
     >
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2>Active themes from recent PRs</h2>
+          <p>
+            The public roadmap remains the source of truth, but recent merged work adds useful context
+            for evaluators who want to understand where Open ACE is heading right now.
+          </p>
+        </div>
+        <article className={styles.sectionCard}>
+          <ul className={styles.bulletList}>
+            {activeThemes.map((theme) => (
+              <li key={theme}>{theme}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2>Tracked roadmap lanes</h2>
