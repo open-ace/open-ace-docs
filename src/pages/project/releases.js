@@ -2,9 +2,45 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import {ProjectChrome, formatDate, projectData, styles} from '../../components/project/ProjectLayout';
 
+const taggedReleaseSummaries = {
+  'v1.2.0': {
+    title: 'Operational hardening for maintained deployments',
+    bullets: [
+      'Upgrade safety tightened with minimum-revision checks and clearer upgrade boundaries.',
+      'Repository review reminders now ship with built-in health checks covering security, dependency, migration, and database signals.',
+      'Model-gateway dark-mode polish and runtime quality fixes reduce friction for administrators already running the platform.',
+    ],
+  },
+  'v1.1.0': {
+    title: 'Autonomous workflows became a real product surface',
+    bullets: [
+      'Issue-driven autonomous development, retry, fork, cancel, and PR linkage landed as core workflow behavior.',
+      'Persisted run provenance, milestone TL;DR summaries, and code-change views made remote-agent execution inspectable.',
+      'ZCode support, token-based remote-agent identity hardening, quota gates, and terminal relay broadened the execution layer.',
+    ],
+  },
+  'v1.0.0': {
+    title: 'Initial public release of the self-hosted platform',
+    bullets: [
+      'Work Mode, Remote Workspace, Remote Agent, and multi-CLI support established the core browser workspace.',
+      'API Key Proxy, governance dashboards, auditability, compliance workflows, and ROI views defined the management plane.',
+      'Docker, Kubernetes, reverse-proxy guidance, and bilingual documentation made the project externally evaluable.',
+    ],
+  },
+};
+
 const recentHighlights = [
   {
-    title: 'Autonomous development workflows',
+    title: 'Docs, deployment, and operator trust',
+    links: [
+      ['#1937', 'product docs refreshed around current capabilities'],
+      ['#1935', 'Python 3.10+ requirement aligned across docs and install guidance'],
+      ['#1215', 'minimum revision guard for safer upgrade paths'],
+      ['#1079', 'Docker upgrade config detection'],
+    ],
+  },
+  {
+    title: 'Autonomous workflow operating model',
     links: [
       ['#717', 'full autonomous development workspace'],
       ['#925', 'batched GitHub issues'],
@@ -30,15 +66,6 @@ const recentHighlights = [
       ['#1074', 'ZCode CLI and app-server mode'],
     ],
   },
-  {
-    title: 'Deployment and upgrade reliability',
-    links: [
-      ['#901', 'Docker upgrade mode'],
-      ['#1020', 'macOS deployment paths'],
-      ['#1053', 'install upgrade/migration checks'],
-      ['#1079', 'Docker upgrade config detection'],
-    ],
-  },
 ];
 
 function prUrl(label) {
@@ -47,6 +74,8 @@ function prUrl(label) {
 
 export default function ReleasesPage() {
   const releasedEntries = projectData.releases.entries.filter((entry) => entry.version !== 'Unreleased');
+  const recentTaggedReleases = (projectData.releases.githubRecent || []).filter((entry) => !entry.draft).slice(0, 3);
+  const latestTag = projectData.releases.latest?.tagName || 'the latest tagged release';
 
   return (
     <ProjectChrome
@@ -79,10 +108,41 @@ export default function ReleasesPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2>Since v1.0.0</h2>
+          <h2>Recent tagged releases</h2>
           <p>
-            The repository has shipped a dense set of post-release PRs. These highlights are curated
-            from the most visible product changes over the last three weeks.
+            Open ACE has moved quickly across the July 2026 release line. These cards summarize what
+            each recent tagged release changed in product terms, not just commit volume.
+          </p>
+        </div>
+        <div className={styles.timelineGrid}>
+          {recentTaggedReleases.map((release) => {
+            const summary = taggedReleaseSummaries[release.tagName];
+
+            return (
+              <article key={release.tagName} className={styles.releaseCard}>
+                <p className={styles.releaseVersion}>{release.tagName}</p>
+                <p className={styles.releaseDate}>{formatDate(release.publishedAt)}</p>
+                <h3>{summary?.title || release.name}</h3>
+                <ul className={styles.bulletList}>
+                  {(summary?.bullets || [release.name]).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <Link className="button button--secondary" to={release.url}>
+                  View release
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2>Current direction after {latestTag}</h2>
+          <p>
+            The repository is still moving after the latest tag. These highlights show where the
+            product and operator experience are being sharpened right now.
           </p>
         </div>
         <div className={styles.timelineGrid}>
