@@ -7,15 +7,19 @@ export default function ProjectOverviewPage() {
   const recentProductSignals = [
     {
       title: 'Autonomous development is now central',
-      body: 'Open ACE can run issue-driven workflows with planning, execution, review, final code changes, batch issue navigation, and auto-merge controls.',
+      body: 'Open ACE can run issue-driven workflows with planning, execution, review, final code changes, batch issue navigation, fork flows, and auto-merge controls.',
     },
     {
       title: 'Timeline UX makes agent work inspectable',
-      body: 'Recent timeline updates added compact milestone cards, summaries, full-text views, status semantics, deep links, and clearer failure/pause behavior.',
+      body: 'Timeline updates added compact milestone cards, summaries, full-text views, status semantics, deep links, approvals, and clearer failure or pause behavior.',
     },
     {
-      title: 'Remote execution is expanding',
-      body: 'ZCode support, app-server mode, token-based remote agent identity, and CLI adapter hardening broaden the execution layer beyond the original tool set.',
+      title: 'Remote execution is broader and safer',
+      body: 'ZCode support, app-server mode, token-based remote agent identity, code-server proxying, and CLI adapter hardening broaden the execution layer beyond the original tool set.',
+    },
+    {
+      title: 'Governance is closer to runtime',
+      body: 'Quota enforcement, run provenance, API key proxying, audit surfaces, and cost visibility now connect more directly to how sessions and workflows are executed.',
     },
   ];
 
@@ -40,7 +44,7 @@ export default function ProjectOverviewPage() {
   return (
     <ProjectChrome
       title="Project momentum without leaving the docs site."
-      description="Open ACE is moving quickly from a self-hosted AI coding workspace into an autonomous engineering control plane. This section turns repository state, roadmap planning, release history, and contribution entry points into a single public surface."
+      description="Open ACE is moving from a browser AI workspace into a self-hosted autonomous engineering control plane. This section turns repository state, roadmap planning, release history, and contribution entry points into a single public surface."
       eyebrow="Project"
       active="overview"
     >
@@ -48,9 +52,9 @@ export default function ProjectOverviewPage() {
         <div className={styles.sectionHeader}>
           <h2>Recent product direction</h2>
           <p>
-            The last three weeks of merged PRs show a clear product shape: autonomous development
-            workflows, observable execution timelines, safer remote agents, and more reliable
-            install/upgrade paths.
+            The current codebase shows a clear product shape: issue-driven autonomous development,
+            inspectable execution timelines, broader remote-agent coverage, and governance features
+            that stay close to runtime behavior.
           </p>
         </div>
         <div className={styles.cardGrid}>
@@ -84,11 +88,11 @@ export default function ProjectOverviewPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2>What this phase adds</h2>
+          <h2>What this project surface shows</h2>
           <p>
-            Phase 1 established the product homepage and bilingual docs shell. This phase adds project
-            transparency pages so visitors can inspect momentum, release maturity, and contribution paths
-            from the same domain.
+            These pages are meant to show how Open ACE has evolved beyond a docs shell: into a product
+            with autonomous workflows, remote execution, and governance features that can all be inspected
+            from one public surface.
           </p>
         </div>
         <div className={styles.cardGrid}>
@@ -97,7 +101,7 @@ export default function ProjectOverviewPage() {
             <ul className={styles.bulletList}>
               <li>Issue-driven runs with plan, implementation, review, and final summary stages</li>
               <li>Batch issue support for operating multiple GitHub issues from one workflow</li>
-              <li>Timeline cards that expose progress, failures, retries, and code changes</li>
+              <li>Timeline cards that expose progress, failures, retries, approvals, and code changes</li>
             </ul>
           </article>
           <article className={styles.sectionCard}>
@@ -105,15 +109,15 @@ export default function ProjectOverviewPage() {
             <ul className={styles.bulletList}>
               <li>Remote Agent registration and token management for controlled machines</li>
               <li>CLI adapters for Claude Code, Qwen Code, Codex, OpenClaw, and ZCode</li>
-              <li>Docker, package, macOS, and source install paths receiving active fixes</li>
+              <li>Browser terminal, code-server access, and ZCode app-server mode for longer-lived work</li>
             </ul>
           </article>
           <article className={styles.sectionCard}>
-            <h3>Project transparency story</h3>
+            <h3>Governance story</h3>
             <ul className={styles.bulletList}>
-              <li>Roadmap, releases, community links, and GitHub signals stay visible from docs</li>
-              <li>Build-time counters show issues, starter work, and repository metadata</li>
-              <li>Docs are split from the application repo so product docs can evolve cleanly</li>
+              <li>API Key Proxy keeps real model credentials on the server</li>
+              <li>Quota, audit, anomaly, and compliance views stay tied to user and session activity</li>
+              <li>SSO, multi-tenant controls, and org-sync integrations support team rollout</li>
             </ul>
           </article>
         </div>

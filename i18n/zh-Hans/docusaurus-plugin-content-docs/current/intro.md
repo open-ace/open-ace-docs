@@ -6,7 +6,7 @@ description: Open ACE 文档入口，覆盖部署、架构、Remote Agent 与治
 
 # Open ACE 文档
 
-Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器化 AI 编码会话、Remote Agent 远程执行、GitHub issue 自主开发工作流，以及团队需要的审计与治理能力放在同一个平台里。
+Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器化 AI 编码会话、Remote Agent 远程执行、GitHub issue 自主开发工作流、API Key 治理，以及团队需要的审计和配额能力放在同一个平台里。
 
 ## 最近变化
 
@@ -14,6 +14,8 @@ Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器
 - 批量 issue、自动合并、暂停/取消、从某个阶段重新 fork 等能力，让 agent 执行更容易运营。
 - 时间线视图增加了里程碑摘要、完整输出、状态语义、用量统计与最终变更展示。
 - Remote Agent 已覆盖 Claude Code、Qwen Code、Codex、OpenClaw 与 ZCode，并加入 token 注册与管理能力。
+- 浏览器终端、code-server / VSCode 代理，以及 ZCode 的 `app-server` 模式让真实开发回路更完整。
+- API Key Proxy 把真实模型密钥留在服务端，只向本地和远程会话发放短生命周期、可回收的代理令牌。
 - Docker、Package、macOS、源码安装、数据库迁移与升级路径正在持续加固。
 
 ## 建议先阅读

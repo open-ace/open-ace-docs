@@ -6,7 +6,7 @@ description: Open ACE documentation index for deployment, architecture, remote a
 
 # Open ACE Documentation
 
-Open ACE is a self-hosted control plane for AI coding agents. It combines browser-based AI coding sessions, Remote Agent execution, autonomous GitHub issue workflows, and governance features for teams that need to run agents on their own machines and credentials.
+Open ACE is a self-hosted control plane for AI coding agents. It combines browser-based AI coding sessions, Remote Agent execution, autonomous GitHub issue workflows, API key governance, and team-level audit and quota controls for organizations that want to keep AI engineering inside their own boundary.
 
 ## What Is New
 
@@ -14,6 +14,8 @@ Open ACE is a self-hosted control plane for AI coding agents. It combines browse
 - Batch issue runs, auto-merge controls, pause/cancel behavior, and fork-from-here flows make agent work easier to operate.
 - Timeline views now expose milestone summaries, full-text output, status semantics, usage counters, and final changes.
 - Remote Agent now covers Claude Code, Qwen Code, Codex, OpenClaw, and ZCode, with token-based registration and management.
+- Browser terminal access, code-server / VSCode proxying, and ZCode `app-server` mode support more realistic development loops.
+- API Key Proxy keeps real model credentials on the server and issues short-lived, revocable proxy tokens to local and remote sessions.
 - Docker, package, macOS, source-install, migration, and upgrade paths are being actively hardened.
 
 ## Start With These Guides
