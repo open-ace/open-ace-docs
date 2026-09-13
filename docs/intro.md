@@ -22,8 +22,8 @@ Open ACE is a self-hosted control plane for AI coding agents. It combines browse
 
 - [Product introduction](./reference/INTRO.md)
 - [Deployment guide](./reference/DEPLOYMENT.md)
-- [Remote Agent](./reference/REMOTE-AGENT.md)
-- [Permission model](./reference/PERMISSION-MODEL.md)
+- [Remote Agent](./reference/REMOTE_AGENT.md)
+- [Permission model](./reference/PERMISSION_MODEL.md)
 - [Architecture](./reference/ARCHITECTURE.md)
 
 ## Who This Is For

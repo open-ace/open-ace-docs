@@ -22,8 +22,8 @@ Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器
 
 - [产品介绍](./reference/INTRO.md)
 - [部署指南](./reference/DEPLOYMENT.md)
-- [Remote Agent](./reference/REMOTE-AGENT.md)
-- [权限模型](./reference/PERMISSION-MODEL.md)
+- [Remote Agent](./reference/REMOTE_AGENT.md)
+- [权限模型](./reference/PERMISSION_MODEL.md)
 - [系统架构](./reference/ARCHITECTURE.md)
 
 ## 适用对象
