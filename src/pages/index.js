@@ -184,7 +184,7 @@ export default function Home() {
               <span>Deployment Guide</span>
               <strong>Go from local startup to production deployment decisions</strong>
             </Link>
-            <Link className={styles.linkCard} to="/docs/reference/REMOTE-AGENT">
+            <Link className={styles.linkCard} to="/docs/reference/REMOTE_AGENT">
               <span>Remote Agent</span>
               <strong>Learn how CLI agents are executed on controlled remote machines</strong>
             </Link>
