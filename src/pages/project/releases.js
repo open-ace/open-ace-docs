@@ -3,6 +3,14 @@ import Link from '@docusaurus/Link';
 import {ProjectChrome, formatDate, projectData, styles} from '../../components/project/ProjectLayout';
 
 const taggedReleaseSummaries = {
+  'v2.0.0': {
+    title: 'A sandbox-isolated, multi-user platform',
+    bullets: [
+      'Interactive and autonomous agents can run in OpenSandbox gVisor/Kata pods behind a fail-closed SandboxProvider contract, with CLI state carried across ephemeral sandboxes.',
+      'Autonomous workflows gained an independent acceptance-verification phase with mechanical gates, human override, and resume-with-feedback.',
+      'SAML SSO, DingTalk and Feishu org sync, signed alert webhooks, and tenant-scoped OS isolation for shared projects. Upgrading needs Python 3.10+, a non-root image, and OPENACE_ENCRYPTION_KEY.',
+    ],
+  },
   'v1.2.0': {
     title: 'Operational hardening for maintained deployments',
     bullets: [
@@ -31,39 +39,39 @@ const taggedReleaseSummaries = {
 
 const recentHighlights = [
   {
-    title: 'Docs, deployment, and operator trust',
+    title: 'Sandboxed execution',
     links: [
-      ['#1937', 'product docs refreshed around current capabilities'],
-      ['#1935', 'Python 3.10+ requirement aligned across docs and install guidance'],
-      ['#1215', 'minimum revision guard for safer upgrade paths'],
-      ['#1079', 'Docker upgrade config detection'],
+      ['#2068', 'SandboxProvider contract (capability, spec, event, handle)'],
+      ['#3205', 'OpenSandbox gVisor/Kata production backend'],
+      ['#3263', 'CLI transcript carry across ephemeral sandboxes'],
+      ['#3382', 'sandboxed isolation level for interactive workspaces'],
     ],
   },
   {
-    title: 'Autonomous workflow operating model',
+    title: 'Autonomous workflow trust',
     links: [
-      ['#717', 'full autonomous development workspace'],
-      ['#925', 'batched GitHub issues'],
-      ['#929', 'batch workflow auto-merge'],
-      ['#984', 'session topology and final summaries'],
+      ['#2344', 'independent acceptance-verification phase'],
+      ['#2346', 'five mechanical acceptance gates'],
+      ['#2460', 'per-domain test evidence requirement'],
+      ['#2714', 'usage-window quota pause with auto-resume'],
     ],
   },
   {
-    title: 'Timeline and run observability',
+    title: 'Multi-user isolation',
     links: [
-      ['#982', 'timeline and batch UX'],
-      ['#995', 'milestone TL;DR summaries'],
-      ['#1056', 'streamlined timeline summaries'],
-      ['#1059', 'compact milestone cards'],
+      ['#3375', 'versioned workspace isolation capability contract'],
+      ['#3385', 'real-Linux multi-user isolation acceptance'],
+      ['#3402', 'tenant-scoped OS isolation for shared projects'],
+      ['#3421', 'isolation-aware path resolution for all fs APIs'],
     ],
   },
   {
-    title: 'Remote Agent and CLI coverage',
+    title: 'Enterprise identity and alerting',
     links: [
-      ['#773', 'token-based remote agent auth'],
-      ['#888', 'agent client token management'],
-      ['#890', 'token rotate/revoke UI'],
-      ['#1074', 'ZCode CLI and app-server mode'],
+      ['#3196', 'SAML SSO provider management'],
+      ['#1787', 'DingTalk org sync and alert bots'],
+      ['#2384', 'Feishu integration configuration'],
+      ['#1807', 'signed, asynchronous alert webhooks'],
     ],
   },
 ];
@@ -110,8 +118,8 @@ export default function ReleasesPage() {
         <div className={styles.sectionHeader}>
           <h2>Recent tagged releases</h2>
           <p>
-            Open ACE has moved quickly across the July 2026 release line. These cards summarize what
-            each recent tagged release changed in product terms, not just commit volume.
+            These cards summarize what each recent tagged release changed in product terms, not just
+            commit volume.
           </p>
         </div>
         <div className={styles.timelineGrid}>
@@ -139,10 +147,10 @@ export default function ReleasesPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2>Current direction after {latestTag}</h2>
+          <h2>What shipped in {latestTag}</h2>
           <p>
-            The repository is still moving after the latest tag. These highlights show where the
-            product and operator experience are being sharpened right now.
+            Representative pull requests behind the latest tagged release, grouped by the product
+            area they strengthened.
           </p>
         </div>
         <div className={styles.timelineGrid}>
@@ -172,7 +180,7 @@ export default function ReleasesPage() {
         <div className={styles.timelineGrid}>
           {releasedEntries.map((entry) => (
             <article key={`${entry.version}-${entry.date}`} className={styles.releaseCard}>
-              <p className={styles.releaseVersion}>v{entry.version}</p>
+              <p className={styles.releaseVersion}>v{entry.version.replace(/^v/, '')}</p>
               <p className={styles.releaseDate}>{formatDate(entry.date)}</p>
               {entry.sections.map((section) => (
                 <div key={section.title}>
