@@ -8,15 +8,14 @@ description: Open ACE 文档入口，覆盖部署、架构、Remote Agent 与治
 
 Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器化 AI 编码会话、Remote Agent 远程执行、GitHub issue 自主开发工作流、API Key 治理，以及团队需要的审计和配额能力放在同一个平台里。
 
-## 最近变化
+## v2.0 新变化
 
-- 自主开发工作流已经可以围绕 GitHub issue 完成计划、实现、评审与最终代码变更总结。
-- 批量 issue、自动合并、暂停/取消、从某个阶段重新 fork 等能力，让 agent 执行更容易运营。
-- 时间线视图增加了里程碑摘要、完整输出、状态语义、用量统计与最终变更展示。
-- Remote Agent 已覆盖 Claude Code、Qwen Code、Codex、OpenClaw 与 ZCode，并加入 token 注册与管理能力。
-- 浏览器终端、code-server / VSCode 代理，以及 ZCode 的 `app-server` 模式让真实开发回路更完整。
-- API Key Proxy 把真实模型密钥留在服务端，只向本地和远程会话发放短生命周期、可回收的代理令牌。
-- Docker、Package、macOS、源码安装、数据库迁移与升级路径正在持续加固。
+- Agent 可以运行在 OpenSandbox 的 gVisor/Kata Pod 中，由 fail-closed 的 `SandboxProvider` 契约统一约束；CLI 会话记录可跨临时沙箱携带，`--resume` 持续可用。
+- 交互工作区新增 `sandboxed` 隔离等级，以及带版本的隔离能力契约（`GET /api/workspace/isolation-capabilities`）与服务端隔离下限。
+- 自主开发工作流新增独立的验收校验阶段：机械门禁、owner/管理员覆盖、带反馈恢复；用量窗口配额暂停会在重置时自动恢复。
+- 多用户部署按租户在 OS 层隔离共享项目，容器重建时固定账户 uid，并自动预置共享命名空间。
+- 企业身份与运营：SAML SSO、钉钉与飞书组织同步、签名告警 Webhook、个人文件浏览器、可配置的 ROI 分析。
+- **从 v1.x 升级**：需要 Python 3.10+，Docker 镜像以非 root 的 uid 1000 运行，首次重启前必须设置 `OPENACE_ENCRYPTION_KEY`。详见[部署指南](./reference/DEPLOYMENT.md#升级)。
 
 ## 建议先阅读
 
