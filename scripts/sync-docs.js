@@ -37,13 +37,32 @@ function resetDir(dirPath) {
   ensureDir(dirPath);
 }
 
-function copyDir(source, target) {
+// The source repo links each doc to its other-language twin with a relative
+// path (`../cn/X.md` in docs/en, `../en/X.md` in docs/cn). On the site the
+// twins live in separate locales, so rewrite those links to the twin's locale
+// URL. The link is absolute: a cross-locale path cannot be resolved by the
+// broken-link checker of a single-locale build, and Docusaurus would prefix a
+// root-relative one with the current locale (`/zh-Hans/...`).
+const baseUrl = 'https://open-ace.github.io/open-ace-docs/';
+const crossLocaleLinks = {
+  en: {from: /\]\(\.\.\/cn\/([\w-]+)\.md(#[^)]*)?\)/g, prefix: `${baseUrl}zh-Hans/docs/reference/`},
+  cn: {from: /\]\(\.\.\/en\/([\w-]+)\.md(#[^)]*)?\)/g, prefix: `${baseUrl}docs/reference/`},
+};
+
+function rewriteCrossLocaleLinks(markdown, lang) {
+  const {from, prefix} = crossLocaleLinks[lang];
+  return markdown.replace(from, (_match, name, anchor) => `](${prefix}${name}${anchor || ''})`);
+}
+
+function copyDir(source, target, lang) {
   ensureDir(target);
   for (const entry of fs.readdirSync(source, {withFileTypes: true})) {
     const sourcePath = path.join(source, entry.name);
     const targetPath = path.join(target, entry.name);
     if (entry.isDirectory()) {
-      copyDir(sourcePath, targetPath);
+      copyDir(sourcePath, targetPath, lang);
+    } else if (lang && entry.name.endsWith('.md')) {
+      fs.writeFileSync(targetPath, rewriteCrossLocaleLinks(fs.readFileSync(sourcePath, 'utf8'), lang));
     } else {
       fs.copyFileSync(sourcePath, targetPath);
     }
@@ -71,8 +90,8 @@ function main() {
   resetDir(englishTarget);
   resetDir(chineseTarget);
 
-  copyDir(englishSource, englishTarget);
-  copyDir(chineseSource, chineseTarget);
+  copyDir(englishSource, englishTarget, 'en');
+  copyDir(chineseSource, chineseTarget, 'cn');
 
   writeCategoryJson(englishCategoryFile, 'Reference');
   writeCategoryJson(chineseCategoryFile, '参考文档');
