@@ -3,6 +3,20 @@ import Link from '@docusaurus/Link';
 import {ProjectChrome, formatDate, projectData, styles} from '../../components/project/ProjectLayout';
 
 const taggedReleaseSummaries = {
+  'v2.1.0': {
+    title: 'One isolation setting, more sandboxes, tighter tenancy',
+    bullets: [
+      'Workspace isolation is one workspace.isolation {level, backend} block; package and Docker installs convert old configs automatically, and the declared level is enforced as a floor.',
+      'New backends without Kubernetes: bubblewrap confinement for OS-account workspaces, and local gVisor or Kata Containers sandboxes with allowlisted egress.',
+      'Messages and analysis APIs are now strictly tenant-scoped, and the admin dashboard went from tens of seconds to milliseconds on large databases.',
+    ],
+  },
+  'v2.0.1': {
+    title: 'Published to PyPI',
+    bullets: [
+      'First PyPI release as open-ace-server, published with Trusted Publishing on every GitHub release.',
+    ],
+  },
   'v2.0.0': {
     title: 'A sandbox-isolated, multi-user platform',
     bullets: [
@@ -39,39 +53,32 @@ const taggedReleaseSummaries = {
 
 const recentHighlights = [
   {
-    title: 'Sandboxed execution',
+    title: 'Workspace isolation',
     links: [
-      ['#2068', 'SandboxProvider contract (capability, spec, event, handle)'],
-      ['#3205', 'OpenSandbox gVisor/Kata production backend'],
-      ['#3263', 'CLI transcript carry across ephemeral sandboxes'],
-      ['#3382', 'sandboxed isolation level for interactive workspaces'],
+      ['#3448', 'one workspace.isolation {level, backend} configuration'],
+      ['#3447', 'bilingual workspace isolation guide'],
+      ['#3435', 'bubblewrap confinement for os_user workspaces'],
     ],
   },
   {
-    title: 'Autonomous workflow trust',
+    title: 'Local sandboxes without Kubernetes',
     links: [
-      ['#2344', 'independent acceptance-verification phase'],
-      ['#2346', 'five mechanical acceptance gates'],
-      ['#2460', 'per-domain test evidence requirement'],
-      ['#2714', 'usage-window quota pause with auto-resume'],
+      ['#3437', 'local gVisor container backend'],
+      ['#3445', 'Kata Containers runtime for the local container backend'],
     ],
   },
   {
-    title: 'Multi-user isolation',
+    title: 'Tenant boundaries',
     links: [
-      ['#3375', 'versioned workspace isolation capability contract'],
-      ['#3385', 'real-Linux multi-user isolation acceptance'],
-      ['#3402', 'tenant-scoped OS isolation for shared projects'],
-      ['#3421', 'isolation-aware path resolution for all fs APIs'],
+      ['#3441', 'tenant-scope every messages endpoint'],
+      ['#3443', 'scope tenant_admin to its tenant on /api/analysis/*'],
     ],
   },
   {
-    title: 'Enterprise identity and alerting',
+    title: 'Dashboard performance',
     links: [
-      ['#3196', 'SAML SSO provider management'],
-      ['#1787', 'DingTalk org sync and alert bots'],
-      ['#2384', 'Feishu integration configuration'],
-      ['#1807', 'signed, asynchronous alert webhooks'],
+      ['#3439', 'stop full daily_messages scans on the admin dashboard'],
+      ['#3444', 'index-walk tenant-scoped tool and host lists'],
     ],
   },
 ];

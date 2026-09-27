@@ -8,7 +8,15 @@ description: Open ACE 文档入口，覆盖部署、架构、Remote Agent 与治
 
 Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器化 AI 编码会话、Remote Agent 远程执行、GitHub issue 自主开发工作流、API Key 治理，以及团队需要的审计和配额能力放在同一个平台里。
 
-## v2.0 新变化
+## v2.1 新变化
+
+- 工作区隔离统一为一个配置块 `workspace.isolation {"level", "backend"}`，声明的等级作为下限强制执行；包安装与 Docker 安装会自动转换旧配置。
+- 无需 Kubernetes 的新后端：OS 账户工作区的 `bwrap` 约束，以及带出站白名单和审计日志的 `local-gvisor` / `local-kata` 容器沙箱。
+- 消息与分析 API 严格按租户隔离；租户管理员只能看到本租户数据。
+- 大数据量下管理仪表盘加载从数十秒降至毫秒级（此前每次请求都会全表扫描消息表）。
+- **升级到 v2.1**：源码安装和只读挂载的配置须先运行隔离配置转换脚本。详见[部署指南](./reference/DEPLOYMENT.md#升级)与[工作区隔离](./reference/WORKSPACE_ISOLATION.md)。
+
+## v2.0 亮点
 
 - Agent 可以运行在 OpenSandbox 的 gVisor/Kata Pod 中，由 fail-closed 的 `SandboxProvider` 契约统一约束；CLI 会话记录可跨临时沙箱携带，`--resume` 持续可用。
 - 交互工作区新增 `sandboxed` 隔离等级，以及带版本的隔离能力契约（`GET /api/workspace/isolation-capabilities`）与服务端隔离下限。
@@ -23,6 +31,7 @@ Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器
 - [部署指南](./reference/DEPLOYMENT.md)
 - [Remote Agent](./reference/REMOTE_AGENT.md)
 - [权限模型](./reference/PERMISSION_MODEL.md)
+- [工作区隔离](./reference/WORKSPACE_ISOLATION.md)
 - [系统架构](./reference/ARCHITECTURE.md)
 
 ## 适用对象
