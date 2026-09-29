@@ -99,7 +99,7 @@ export default function Home() {
               <Link className="button button--primary button--lg" to="/docs/intro">
                 Read the docs
               </Link>
-              <Link className="button button--secondary button--lg" to="/docs/reference/DEPLOYMENT">
+              <Link className="button button--secondary button--lg" to="/docs/guide/DEPLOYMENT">
                 Start deployment
               </Link>
             </div>
@@ -176,15 +176,15 @@ export default function Home() {
               <span>Documentation Home</span>
               <strong>Browse the structured docs entry point</strong>
             </Link>
-            <Link className={styles.linkCard} to="/docs/reference/INTRO">
+            <Link className={styles.linkCard} to="/docs/guide/INTRO">
               <span>Product Intro</span>
               <strong>Understand positioning, features, and architecture at a glance</strong>
             </Link>
-            <Link className={styles.linkCard} to="/docs/reference/DEPLOYMENT">
+            <Link className={styles.linkCard} to="/docs/guide/DEPLOYMENT">
               <span>Deployment Guide</span>
               <strong>Go from local startup to production deployment decisions</strong>
             </Link>
-            <Link className={styles.linkCard} to="/docs/reference/REMOTE_AGENT">
+            <Link className={styles.linkCard} to="/docs/guide/REMOTE_AGENT">
               <span>Remote Agent</span>
               <strong>Learn how CLI agents are executed on controlled remote machines</strong>
             </Link>

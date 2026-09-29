@@ -66,8 +66,8 @@ const config = {
           {to: '/', label: 'Home', position: 'left'},
           {to: '/docs/intro', label: 'Docs', position: 'left'},
           {to: '/project', label: 'Project', position: 'left'},
-          {to: '/docs/reference/INTRO', label: 'Product Guide', position: 'left'},
-          {to: '/docs/reference/REMOTE_AGENT', label: 'Remote Agent', position: 'left'},
+          {to: '/docs/guide/INTRO', label: 'Product Guide', position: 'left'},
+          {to: '/docs/guide/REMOTE_AGENT', label: 'Remote Agent', position: 'left'},
           {
             href: 'https://github.com/open-ace/open-ace',
             label: 'GitHub',
@@ -96,8 +96,8 @@ const config = {
             title: 'Docs',
             items: [
               {label: 'Getting Started', to: '/docs/intro'},
-              {label: 'Deployment', to: '/docs/reference/DEPLOYMENT'},
-              {label: 'Remote Agent', to: '/docs/reference/REMOTE_AGENT'},
+              {label: 'Deployment', to: '/docs/guide/DEPLOYMENT'},
+              {label: 'Remote Agent', to: '/docs/guide/REMOTE_AGENT'},
             ],
           },
           {

@@ -14,7 +14,7 @@ Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器
 - 无需 Kubernetes 的新后端：OS 账户工作区的 `bwrap` 约束，以及带出站白名单和审计日志的 `local-gvisor` / `local-kata` 容器沙箱。
 - 消息与分析 API 严格按租户隔离；租户管理员只能看到本租户数据。
 - 大数据量下管理仪表盘加载从数十秒降至毫秒级（此前每次请求都会全表扫描消息表）。
-- **升级到 v2.1**：源码安装和只读挂载的配置须先运行隔离配置转换脚本。详见[部署指南](./reference/DEPLOYMENT.md#升级)与[工作区隔离](./reference/WORKSPACE_ISOLATION.md)。
+- **升级到 v2.1**：源码安装和只读挂载的配置须先运行隔离配置转换脚本。详见[部署指南](./guide/DEPLOYMENT.md#升级)与[工作区隔离](./contracts/WORKSPACE_ISOLATION_CAPABILITIES.md)。
 
 ## v2.0 亮点
 
@@ -23,16 +23,16 @@ Open ACE 是一个面向 AI Coding Agent 的自托管控制面。它把浏览器
 - 自主开发工作流新增独立的验收校验阶段：机械门禁、owner/管理员覆盖、带反馈恢复；用量窗口配额暂停会在重置时自动恢复。
 - 多用户部署按租户在 OS 层隔离共享项目，容器重建时固定账户 uid，并自动预置共享命名空间。
 - 企业身份与运营：SAML SSO、钉钉与飞书组织同步、签名告警 Webhook、个人文件浏览器、可配置的 ROI 分析。
-- **从 v1.x 升级**：需要 Python 3.10+，Docker 镜像以非 root 的 uid 1000 运行，首次重启前必须设置 `OPENACE_ENCRYPTION_KEY`。详见[部署指南](./reference/DEPLOYMENT.md#升级)。
+- **从 v1.x 升级**：需要 Python 3.10+，Docker 镜像以非 root 的 uid 1000 运行，首次重启前必须设置 `OPENACE_ENCRYPTION_KEY`。详见[部署指南](./guide/DEPLOYMENT.md#升级)。
 
 ## 建议先阅读
 
-- [产品介绍](./reference/INTRO.md)
-- [部署指南](./reference/DEPLOYMENT.md)
-- [Remote Agent](./reference/REMOTE_AGENT.md)
-- [权限模型](./reference/PERMISSION_MODEL.md)
-- [工作区隔离](./reference/WORKSPACE_ISOLATION.md)
-- [系统架构](./reference/ARCHITECTURE.md)
+- [产品介绍](./guide/INTRO.md)
+- [部署指南](./guide/DEPLOYMENT.md)
+- [Remote Agent](./guide/REMOTE_AGENT.md)
+- [权限模型](./dev/PERMISSION_MODEL.md)
+- [工作区隔离](./contracts/WORKSPACE_ISOLATION_CAPABILITIES.md)
+- [系统架构](./dev/ARCHITECTURE.md)
 
 ## 适用对象
 
