@@ -14,7 +14,7 @@ Open ACE is a self-hosted control plane for AI coding agents. It combines browse
 - New backends that need no Kubernetes: `bwrap` confinement for OS-account workspaces, and `local-gvisor` / `local-kata` container sandboxes with allowlisted egress and an audit log.
 - The messages and analysis APIs are strictly tenant-scoped; tenant admins now see only their own tenant.
 - The admin dashboard loads in milliseconds on large databases (it previously rescanned message tables on every request).
-- **Upgrading to v2.1**: source installs and read-only mounted configs must run the isolation config converter first. See the [deployment guide](./reference/DEPLOYMENT.md#upgrading) and [workspace isolation](./reference/WORKSPACE_ISOLATION.md).
+- **Upgrading to v2.1**: source installs and read-only mounted configs must run the isolation config converter first. See the [deployment guide](./guide/UPGRADING.md) and [workspace isolation](./contracts/WORKSPACE_ISOLATION_CAPABILITIES.md).
 
 ## v2.0 Highlights
 
@@ -23,16 +23,16 @@ Open ACE is a self-hosted control plane for AI coding agents. It combines browse
 - Autonomous workflows now pass an independent acceptance-verification phase with mechanical gates, owner/admin override, and resume-with-feedback. Usage-window quota pauses auto-resume at reset.
 - Multi-user deployments isolate shared projects per tenant at the OS level, pin account uids across container recreation, and provision the shared namespace automatically.
 - Enterprise identity and operations: SAML SSO, DingTalk and Feishu org sync, signed alert webhooks, a personal files browser, and configurable ROI analysis.
-- **Upgrading from v1.x**: Python 3.10+ is required, the Docker image runs as non-root uid 1000, and `OPENACE_ENCRYPTION_KEY` must be set before the first restart. See the [deployment guide](./reference/DEPLOYMENT.md#upgrading).
+- **Upgrading from v1.x**: Python 3.10+ is required, the Docker image runs as non-root uid 1000, and `OPENACE_ENCRYPTION_KEY` must be set before the first restart. See the [deployment guide](./guide/UPGRADING.md).
 
 ## Start With These Guides
 
-- [Product introduction](./reference/INTRO.md)
-- [Deployment guide](./reference/DEPLOYMENT.md)
-- [Remote Agent](./reference/REMOTE_AGENT.md)
-- [Permission model](./reference/PERMISSION_MODEL.md)
-- [Workspace isolation](./reference/WORKSPACE_ISOLATION.md)
-- [Architecture](./reference/ARCHITECTURE.md)
+- [Product introduction](./guide/INTRO.md)
+- [Deployment guide](./guide/DEPLOYMENT.md)
+- [Remote Agent](./guide/REMOTE_AGENT.md)
+- [Permission model](./dev/PERMISSION_MODEL.md)
+- [Workspace isolation](./contracts/WORKSPACE_ISOLATION_CAPABILITIES.md)
+- [Architecture](./dev/ARCHITECTURE.md)
 
 ## Who This Is For
 

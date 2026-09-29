@@ -1,6 +1,12 @@
 node_modules/
 build/
 .docusaurus/
-docs/reference/
-i18n/zh-Hans/docusaurus-plugin-content-docs/current/reference/
+docs/guide/
+docs/dev/
+docs/contracts/
+docs/security/
+i18n/zh-Hans/docusaurus-plugin-content-docs/current/guide/
+i18n/zh-Hans/docusaurus-plugin-content-docs/current/dev/
+i18n/zh-Hans/docusaurus-plugin-content-docs/current/contracts/
+i18n/zh-Hans/docusaurus-plugin-content-docs/current/security/
 static/img/
